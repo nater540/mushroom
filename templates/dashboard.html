@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Label</th>
+        <th scope="col">Germination Date</th>
+        <th scope="col">Species</th>
+        <th scope="col">Strain</th>
+        <th scope="col">Petri Dish?</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for mushroom in mushrooms %}
+        <td>{{mushroom.id}}</td>
+        <td>{{mushroom.name}}</td>
+        <td>{{mushroom.label}}</td>
+        <td>{{mushroom.germination_date}}</td>
+        <td>{{mushroom.species_id}}</td>
+        <td>{{mushroom.strain_id}}</td>
+        <td>{{mushroom.petri_dish}}</td>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock content %}

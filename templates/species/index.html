@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for sp in species %}
+        <tr>
+          <td><a href="/species/{{sp.slug}}">{{sp.name}}</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock content %}

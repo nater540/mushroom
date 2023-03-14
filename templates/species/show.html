@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Description</h2>
+{{species.description}}
+
+<h2>Mushrooms</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Strain</th>
+      <th scope="col">Germination Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for mushroom in mushrooms %}
+      <tr>
+        <td><a href="/mushrooms/{{mushroom.id}}">{{mushroom.name}}</a></td>
+        <td>{{mushroom.strain_id}}</td>
+        <td>{{mushroom.germination_date}}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}
