@@ -2,7 +2,6 @@ use diesel::prelude::*;
 use diesel::r2d2::ConnectionManager;
 
 pub mod schema;
-pub mod models;
 
 pub type Pool = diesel::r2d2::Pool<ConnectionManager<SqliteConnection>>;
 

@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+{% if note.id > 0 %}
+<form action="/notes/{{note.id}}/update" method="post">
+{% else %}
+<form action="/notes" method="post">
+{% endif %}
+  <div class="mb-3">
+    <label for="mushroom_id" class="form-label">Mushroom</label>
+    <select name="mushroom_id" class="form-select" aria-label="Mushroom Mushroom">
+      <option selected>Open this select menu</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input type="text" class="form-control" id="title" value="{{note.title}}" placeholder="This is the song that never ends...">
+  </div>
+  <div class="mb-3">
+    <label for="body" class="form-label">Body</label>
+    <textarea class="form-control" id="body" rows="5" value="{{note.body}}"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock content %}

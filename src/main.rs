@@ -1,9 +1,12 @@
+#![allow(dead_code)]
+
 use anyhow::Result;
 use tracing_subscriber::FmtSubscriber;
 use tracing::{info, Level};
 
 mod db;
 mod http;
+mod models;
 
 #[actix_web::main]
 async fn main() -> Result<()> {

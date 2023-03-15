@@ -1,7 +1,8 @@
 use anyhow::Result;
 use actix_web::{web, HttpResponse, Responder, Error};
 use actix_web_lab::respond::Html;
-use crate::db::{Pool, models::Mushroom};
+use crate::db::Pool;
+use crate::models::Mushroom;
 
 pub fn config(cfg: &mut web::ServiceConfig) {
   cfg.service(

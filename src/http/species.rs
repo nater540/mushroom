@@ -2,10 +2,8 @@ use anyhow::Result;
 use actix_web::{web, HttpResponse, Responder, Error};
 use actix_web_lab::respond::Html;
 
-use crate::db::{
-  Pool,
-  models::{ Mushroom, Species }, schema::species
-};
+use crate::db::Pool;
+use crate::models::{Mushroom, Species};
 
 /// Actix configuration helper
 pub fn config(cfg: &mut web::ServiceConfig) {
@@ -46,11 +44,9 @@ async fn index(tmpl: web::Data<tera::Tera>, pool: web::Data<Pool>) -> Result<imp
 async fn show(tmpl: web::Data<tera::Tera>, pool: web::Data<Pool>, path: web::Path<String>) -> Result<impl Responder, Error> {
   let slug = path.into_inner();
 
-  let (species, mushrooms) = web::block(move || {
-    show_query(slug, pool)
-  })
-  .await?
-  .map_err(actix_web::error::ErrorInternalServerError)?;
+  let (species, mushrooms) = web::block(move || show_query(slug, pool))
+    .await?
+    .map_err(actix_web::error::ErrorInternalServerError)?;
 
   let mut ctx = tera::Context::new();
 

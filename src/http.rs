@@ -1,5 +1,7 @@
 mod dashboard;
 mod species;
+mod notes;
+mod handlers;
 
 use actix_web::{
   body::BoxBody,
@@ -22,6 +24,7 @@ pub async fn start_server(connection: Pool) -> anyhow::Result<()> {
       .wrap(middleware::Logger::default())
       .configure(dashboard::config)
       .configure(species::config)
+      .configure(notes::config)
       .service(actix_files::Files::new("/assets", "./assets/").show_files_listing())
       .service(web::scope("").wrap(error_handlers()))
   })
